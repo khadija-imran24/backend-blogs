@@ -8,5 +8,10 @@ const pool = mysql.createPool({
   database: process.env.MYSQL_DATABASE || 'b2ono8d7tfmzajnhawjd',
   port: process.env.MYSQL_PORT || 3306,
 });
-console.log('Database connection pool created');
+if (!pool) {
+  console.error('Failed to create database connection pool');
+}
+else {
+  console.log('Database connection pool created successfully');
+}
 module.exports = pool;
